@@ -92,8 +92,9 @@ const Todo = () => {
   };
 
   //  HandleEdit
-  const handleEdit = (edit) => {
+  const handleEdit = (edit, edited) => {
     seteditItem(edit);
+    seteditTodoText(edited);
     setIsOpen(true);
   };
 
@@ -159,7 +160,9 @@ const Todo = () => {
                   <FaEdit
                     className="text-3xl cursor-pointer text-yellow-700 hover:text-yellow-600 transition-all hover:scale-110"
                     title="Edit"
-                    onClick={() => handleEdit(item.todoId)}
+                    onClick={() =>
+                      handleEdit(item.todoId, item.todoItem.todoItem)
+                    }
                   />
 
                   <MdDelete
@@ -184,6 +187,7 @@ const Todo = () => {
               <form>
                 <input
                   value={modalInputValue}
+                  placeholder={editTodoText}
                   className="bg-gray-500"
                   onChange={(e) => setmodalInputValue(e.target.value)}
                 />
